@@ -291,12 +291,16 @@ CODE_STD_STRING_REQUESTparseSelectorAct(1)
             {
                 pData->pattern = ZMQ_REP;
             }
+            else if (strcmp(val, "dealer") == 0)
+            {
+                pData->pattern = ZMQ_DEALER;
+            }
             else
             {
                 errmsg.LogError(0,
                                 RS_RET_INVALID_PARAMS,
                                 "error: invalid messaging pattern "
-                                "- use 'push' or 'pub'");
+                                "- use 'push', 'pub' or 'dealer'");
                 ABORT_FINALIZE(RS_RET_INVALID_PARAMS);
             }
         }
